@@ -1,6 +1,6 @@
 <?php
 
-namespace Entities;
+namespace Application\Entity;
 
 /** @Entity @Table(name="addresses") */
 class Address

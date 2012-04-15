@@ -1,6 +1,6 @@
 <?php
 
-namespace Entities;
+namespace Application\Entities;
 
 /** @Entity @Table(name="users") */
 class User
