@@ -1,6 +1,6 @@
 <?php
 
-namespace Entity;
+namespace Application\Entity;
 /**
  * Description of Company
  *
@@ -21,7 +21,7 @@ class Company
     private $name;
     
     /**
-     * @ManyToMany(targetEntity="Products", inversedBy="companies")
+     * @ManyToMany(targetEntity="Product", inversedBy="companies")
      * @JoinTable(name="companies_products")
      **/
     private $products;

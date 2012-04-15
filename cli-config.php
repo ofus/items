@@ -10,9 +10,9 @@ $classLoader = new \Doctrine\Common\ClassLoader('Doctrine\Common', realpath(__DI
 $classLoader->register();
 $classLoader = new \Doctrine\Common\ClassLoader('Symfony', realpath(__DIR__ . '/library/vendor/Doctrine/lib/vendor'));
 $classLoader->register();
-$classLoader = new \Doctrine\Common\ClassLoader('Entities', realpath(__DIR__ . '/library/Application'));
+$classLoader = new \Doctrine\Common\ClassLoader('Entity', realpath(__DIR__ . '/library/Application'));
 $classLoader->register();
-$classLoader = new \Doctrine\Common\ClassLoader('Proxies',  realpath(__DIR__ . '/library/Skeleton'));
+$classLoader = new \Doctrine\Common\ClassLoader('Proxy',  realpath(__DIR__ . '/library/Skeleton'));
 $classLoader->register();
 
 $config = new \Doctrine\ORM\Configuration();
@@ -20,15 +20,23 @@ $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
 $driverImpl = $config->newDefaultAnnotationDriver(array(__DIR__."/library/Application/Entity"));
 $config->setMetadataDriverImpl($driverImpl);
 
-$config->setProxyDir(__DIR__ . '/Proxies');
-$config->setProxyNamespace('Proxies');
+$config->setProxyDir(__DIR__ . '/Proxy');
+$config->setProxyNamespace('Proxy');
 
 $connectionOptions = array(
-    'driver' => 'pdo_sqlite',
-    'path' => 'database.sqlite'
+    array(
+        'driver'    => 'pdo_sqlite',
+        'path'      => 'database.sqlite',
+    ), array(
+        'driver'    => 'pdo_mysql',
+        'dbname'    => 'items',
+        'host'      => 'localhost',
+        'user'      => 'root',
+        'password'  => '',
+    ),
 );
 
-$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
+$em = \Doctrine\ORM\EntityManager::create($connectionOptions[0], $config);
 
 $helpers = array(
     'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em->getConnection()),
