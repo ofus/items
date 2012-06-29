@@ -2,7 +2,7 @@
 
 namespace Application\Entity;
 
-/** @Entity @Table(name="users") */
+/** @Entity @Table(name="Users") */
 class User
 {
     /**

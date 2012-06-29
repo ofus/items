@@ -2,7 +2,7 @@
 
 namespace Application\Entity;
 
-/** @Entity @Table(name="address") */
+/** @Entity @Table(name="Address") */
 class Address
 {
     /**
@@ -12,7 +12,7 @@ class Address
     private $id;
     /** @Column(type="string", length=255) */
     private $street;
-    /** @OneToOne(targetEntity="User", mappedBy="address") */
+    /** @OneToOne(targetEntity="User", mappedBy="Address") */
     private $user;
 
     public function getId()
