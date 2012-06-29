@@ -2,12 +2,12 @@
 
 namespace Application\Entity;
 /**
- * Description of Order
+ * Description of Purchase
  *
  * @author Andrew Joseph <andrew at aljweb.com>
  * @Entity
  */
-class Order
+class Purchase
 {
     /**
      * @Id @Column(type="integer")
