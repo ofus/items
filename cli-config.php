@@ -32,11 +32,11 @@ $connectionOptions = array(
         'dbname'    => 'items',
         'host'      => 'localhost',
         'user'      => 'root',
-        'password'  => '',
+        'password'  => 'root',
     ),
 );
 
-$em = \Doctrine\ORM\EntityManager::create($connectionOptions[0], $config);
+$em = \Doctrine\ORM\EntityManager::create($connectionOptions[1], $config);
 
 $helpers = array(
     'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em->getConnection()),
